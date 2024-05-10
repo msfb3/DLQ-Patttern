@@ -1,4 +1,7 @@
 package com.fb.dlqpattern.ergebnismeldung.rest;
 
-public class SendInfoDTO {
+import org.springframework.lang.NonNull;
+
+public record SendInfoDTO(@NonNull String wahllokalID, @NonNull String nachricht) {
+
 }
