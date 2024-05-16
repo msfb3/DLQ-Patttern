@@ -19,7 +19,7 @@ public class SendInfoController {
     }
 
     @PostMapping("/ergebnismeldung")
-    public void sendErgebnismeldung(@RequestParam SendInfoDTO body ) {
-        sendInfoService.sendErgebnismeldung(body);
+    public void sendErgebnismeldung(@RequestParam SendInfoDTO info ) {
+        sendInfoService.getInfoDTOFromInfo(info);
     }
 }

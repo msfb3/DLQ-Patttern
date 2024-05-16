@@ -18,7 +18,13 @@ public class SendInfoService {
         this.sendInfoMapper = sendInfoMapper;
         log.debug("Nachricht erhalten");
     }
-    public SendInfoDTO getInfoDTOFromInfo(SendInfo sendInfo) {
-        return sendInfoMapper.infoToInfoDTO(sendInfo);
+
+    public void  getInfoDTOFromInfo(SendInfoDTO sendInfoDTO) {
+        SendInfo sendInfo = sendInfoMapper.infoDTOToInfo(sendInfoDTO);
+          this.save(sendInfo);
+    }
+
+    public void save(SendInfo sendInfo) {
+        System.out.println("erfolgrich gespeichet" + sendInfo);
     }
 }
