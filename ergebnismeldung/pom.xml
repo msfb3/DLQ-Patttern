@@ -15,7 +15,7 @@
 	<description>A backend for sending messages to the eai</description>
 	<properties>
 		<java.version>17</java.version>
-		<org.projectlomboak.lomboak.version>1.18.30</org.projectlomboak.lomboak.version>
+		<org.projectlombok.lombok.version>1.18.30</org.projectlombok.lombok.version>
 		<maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
 	</properties>
 	<dependencies>
