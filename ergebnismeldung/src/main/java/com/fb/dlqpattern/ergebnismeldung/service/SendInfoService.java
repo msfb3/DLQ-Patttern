@@ -19,7 +19,7 @@ public class SendInfoService {
         log.debug("Nachricht erhalten");
     }
 
-    public void SendInfoFromDTO(SendInfoDTO sendInfoDTO) {
+    public void sendInfoFromDTO(SendInfoDTO sendInfoDTO) {
         SendInfo sendInfo = sendInfoMapper.infoDTOToInfo(sendInfoDTO);
           this.save(sendInfo);
     }

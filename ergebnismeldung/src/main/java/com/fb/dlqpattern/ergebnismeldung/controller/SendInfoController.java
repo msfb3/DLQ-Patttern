@@ -20,6 +20,6 @@ public class SendInfoController {
 
     @PostMapping("/ergebnismeldung")
     public void sendErgebnismeldung(@RequestParam SendInfoDTO info ) {
-        sendInfoService.SendInfoFromDTO(info);
+        sendInfoService.sendInfoFromDTO(info);
     }
 }
