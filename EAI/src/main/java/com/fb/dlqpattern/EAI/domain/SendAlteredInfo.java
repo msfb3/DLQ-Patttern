@@ -1,12 +1,9 @@
 package com.fb.dlqpattern.EAI.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
+@Data
 public class SendAlteredInfo {
-
-    @Getter
-    @Setter
 
     private int id;
     private String name;
