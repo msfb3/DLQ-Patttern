@@ -10,17 +10,16 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class SendInfoService {
-    private final SendInfoMapper sendInfoMapper;
+    ;
 
 
     @Autowired
-    public SendInfoService(SendInfoMapper sendInfoMapper) {
-        this.sendInfoMapper = sendInfoMapper;
+    public SendInfoService() {
         log.debug("Nachricht erhalten");
     }
 
     public void sendInfoFromDTO(SendInfoDTO sendInfoDTO) {
-        SendInfo sendInfo = sendInfoMapper.infoDTOToInfo(sendInfoDTO);
+        SendInfo sendInfo = SendInfoMapper.INSTANCE.toInfo(sendInfoDTO);
           this.save(sendInfo);
     }
 
