@@ -1,33 +1,48 @@
 package com.fb.dlqpattern.ActiveQueue.queue;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fb.dlqpattern.ActiveQueue.domain.RecivedData;
+
+import java.util.*;
 
 
+public class MyQueue<RecivedData> extends AbstractQueue<RecivedData> {
 
-public class MyQueue {
-    private List<Integer> data;
-    private int q_start;
+    private LinkedList<RecivedData> dataQueue;
+
     public MyQueue() {
-        data = new ArrayList<Integer>();
-        q_start = 0;
+        this.dataQueue = new LinkedList<RecivedData>();
     }
-    public boolean addQueue(int x) {
-        data.add(x);
-        return true;
+
+    @Override
+    public Iterator<RecivedData> iterator() {
+        return dataQueue.iterator();
     }
-    public boolean deleteQueue() {
-        if (isEmpty()) {
-            return false;
-        }
-        q_start++;
+
+    @Override
+    public int size() {
+        return dataQueue.size();
+    }
+
+
+    @Override
+    public boolean offer(RecivedData recivedData) {
+        if(recivedData == null) return false;
+        dataQueue.add(recivedData);
         return true;
     }
 
-    public int FirstItem() {
-        return data.get(q_start);
+    @Override
+    public RecivedData poll() {
+        Iterator<RecivedData> iter = dataQueue.iterator();
+        RecivedData recivedData = iter.next();
+        if(recivedData != null) {
+            iter.remove();
+        }
+        return recivedData;
     }
-    public boolean isEmpty() {
-        return q_start >= data.size();
+
+    @Override
+    public RecivedData peek() {
+        return dataQueue.getFirst();
     }
 }
