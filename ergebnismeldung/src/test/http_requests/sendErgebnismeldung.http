@@ -1,0 +1,20 @@
+POST http://localhost:39147/ergebnismeldung
+Content-Type: application/json
+
+{
+  "id": 123,
+  "name": "Testname",
+  "age": 99,
+  "kind": "Schnellmeldung"
+}
+
+
+###
+POST http://localhost:39147/ergebnismeldung
+Content-Type: application/json
+
+{
+  "kind": "Sollte Fehler werfen, weil Property 'Name' fehlt",
+  "id": 3,
+  "age": 4
+}
