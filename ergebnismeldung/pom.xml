@@ -17,6 +17,7 @@
 		<java.version>17</java.version>
 		<org.projectlombok.lombok.version>1.18.30</org.projectlombok.lombok.version>
 		<maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
+		<apache.commons.lang3>3.14.0</apache.commons.lang3>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -47,6 +48,16 @@
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
 			<version>1.5.5.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${apache.commons.lang3}</version>
+		</dependency>
+		<dependency>
+			<groupId>de.muenchen.oss.wahllokalsystem.wls-common</groupId>
+			<artifactId>exception</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 
 	</dependencies>

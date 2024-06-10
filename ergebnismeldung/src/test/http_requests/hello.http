@@ -1,0 +1,4 @@
+GET http://localhost:39147/hello
+
+###
+GET http://localhost:39147/hello?name=Fabi
