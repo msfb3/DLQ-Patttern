@@ -1,8 +1,12 @@
 package com.fb.dlqpattern.was.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class RevicedData {
 
     private int id;
@@ -11,11 +15,6 @@ public class RevicedData {
     private String kind;
     private boolean isAltered;
 
-    public RevicedData(int id, String name, int age, String kind, boolean isAltered) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.kind = kind;
-        this.isAltered = isAltered;
-    }
 }
+
+
