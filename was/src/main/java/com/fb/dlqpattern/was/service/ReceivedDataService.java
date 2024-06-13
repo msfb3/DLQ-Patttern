@@ -1,9 +1,9 @@
 package com.fb.dlqpattern.was.service;
 
 
-import com.fb.dlqpattern.was.domain.RevicedData;
-import com.fb.dlqpattern.was.mapper.RevicedDataMapper;
-import com.fb.dlqpattern.was.rest.RevicedDataDTO;
+import com.fb.dlqpattern.was.domain.ReceivedData;
+import com.fb.dlqpattern.was.mapper.ReceivedDataMapper;
+import com.fb.dlqpattern.was.rest.ReceivedDataDTO;
 import com.fb.dlqpattern.was.util.WasExceptionKonstanten;
 import de.muenchen.oss.wahllokalsystem.wls.common.exception.FachlicheWlsException;
 import lombok.extern.slf4j.Slf4j;
@@ -15,26 +15,26 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class RevicedDataService {
+public class ReceivedDataService {
     @Value("${service.info.oid}")
     private String serviceOid;
 
-    public void reviceFromDTO(RevicedDataDTO revicedDataDTO) {
+    public void receiveFromDTO(ReceivedDataDTO receivedDataDTO) {
         log.debug("Service aufgerufen");
 
-        if (null == revicedDataDTO
-                || revicedDataDTO.id() <= 0
-                || revicedDataDTO.age() <= 0
-                || StringUtils.isEmpty(revicedDataDTO.name()) || StringUtils.isBlank(revicedDataDTO.name())
-                || StringUtils.isEmpty(revicedDataDTO.kind()) || StringUtils.isBlank(revicedDataDTO.kind())) {
+        if (null == receivedDataDTO
+                || receivedDataDTO.id() <= 0
+                || receivedDataDTO.age() <= 0
+                || StringUtils.isEmpty(receivedDataDTO.name()) || StringUtils.isBlank(receivedDataDTO.name())
+                || StringUtils.isEmpty(receivedDataDTO.kind()) || StringUtils.isBlank(receivedDataDTO.kind())) {
 
             throw FachlicheWlsException.withCode(WasExceptionKonstanten.CODE_REVICEDATA_PARAMETER_UNVOLLSTAENDIG).inService(serviceOid)
                     .buildWithMessage("Das Objekt ReciveData ist nicht vollständig");
         }
-        RevicedData revicedData = RevicedDataMapper.INSTANCE.toData(revicedDataDTO);
-        this.save(revicedData);
+        ReceivedData receivedData = ReceivedDataMapper.INSTANCE.toData(receivedDataDTO);
+        this.save(receivedData);
     }
-    public void save(RevicedData revicedData) {
+    public void save(ReceivedData receivedData) {
         System.out.println("erfolgreich gespeichert");
     }
 }

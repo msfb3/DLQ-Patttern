@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RevicedData {
+public class ReceivedData {
 
     private int id;
     private String name;
