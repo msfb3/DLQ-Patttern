@@ -29,7 +29,7 @@ public class ReceivedDataService {
                 || StringUtils.isEmpty(receivedDataDTO.kind()) || StringUtils.isBlank(receivedDataDTO.kind())) {
 
             throw FachlicheWlsException.withCode(WasExceptionKonstanten.CODE_REVICEDATA_PARAMETER_UNVOLLSTAENDIG).inService(serviceOid)
-                    .buildWithMessage("Das Objekt ReciveData ist nicht vollständig");
+                    .buildWithMessage("Das Objekt ReceiveData ist nicht vollständig");
         }
         ReceivedData receivedData = ReceivedDataMapper.INSTANCE.toData(receivedDataDTO);
         this.save(receivedData);
