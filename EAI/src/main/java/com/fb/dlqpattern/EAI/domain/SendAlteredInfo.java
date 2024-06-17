@@ -1,8 +1,12 @@
 package com.fb.dlqpattern.EAI.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class SendAlteredInfo {
 
     private int id;
@@ -12,11 +16,6 @@ public class SendAlteredInfo {
     private boolean isAltered;
 
 
-    public SendAlteredInfo(int id, String name, int age, String kind, boolean isAltered) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.kind = kind;
-        this.isAltered = isAltered;
-    }
+
+
 }
