@@ -12,13 +12,26 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.DefaultUriBuilderFactory;
+
+import java.util.List;
 
 @Slf4j
+@Service
 @Component
 public class SendInfoService {
 
+
+
     @Value("${service.info.oid}")
     private String serviceOid;
+
+public List<SendInfo> findAll() {
+    RestTemplate restTemplate = new RestTemplate();
+    restTemplate.setUriTemplateHandler(new DefaultUriBuilderFactory("http://localhost:39147"));
+    restTemplate.getForObject("/ergebnismeldung", String.class);
+}
 
     public void sendInfoFromDTO(SendInfoDTO sendInfoDTO) {
 
