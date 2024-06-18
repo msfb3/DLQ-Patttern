@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.InvalidPropertyException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
@@ -20,6 +21,7 @@ import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 
+import java.net.URI;
 import java.util.List;
 
 @Slf4j
@@ -43,19 +45,9 @@ public class SendInfoService {
             .toBodilessEntity();
 
     public List<SendInfo> findAll() {
-        List<SendInfo> sendInfos = restClient.get()
-                .uri(uriBase + "/infos")
-                .exchange(( response)) -> {
-            if (response.getStatusCode().isSameCodeAs(HttpStatusCode.valueOf(204))) {
-                throw new WlsException() {
-                    @Override
-                    public WlsExceptionCategory getCategory() {
-                        return super.getCategory();
-                    }
-                }
-            }
+        RequestEntity<Void> request = RequestEntity.get(URI.create(uriBase + "/infos")).build();
 
-        }
+        ResponseEntity<List<SendInfo>> response = restClient.
     }
 
 
