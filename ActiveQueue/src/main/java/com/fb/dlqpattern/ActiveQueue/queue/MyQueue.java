@@ -1,20 +1,18 @@
 package com.fb.dlqpattern.ActiveQueue.queue;
 
-import com.fb.dlqpattern.ActiveQueue.domain.RecivedData;
-
 import java.util.*;
 
 
-public class MyQueue<RecivedData> extends AbstractQueue<RecivedData> {
+public class MyQueue<ReceivedData> extends AbstractQueue<ReceivedData> {
 
-    private LinkedList<RecivedData> dataQueue;
+    private LinkedList<ReceivedData> dataQueue;
 
     public MyQueue() {
-        this.dataQueue = new LinkedList<RecivedData>();
+        this.dataQueue = new LinkedList<ReceivedData>();
     }
 
     @Override
-    public Iterator<RecivedData> iterator() {
+    public Iterator<ReceivedData> iterator() {
         return dataQueue.iterator();
     }
 
@@ -25,24 +23,24 @@ public class MyQueue<RecivedData> extends AbstractQueue<RecivedData> {
 
 
     @Override
-    public boolean offer(RecivedData recivedData) {
-        if(recivedData == null) return false;
-        dataQueue.add(recivedData);
+    public boolean offer(ReceivedData receivedData) {
+        if(receivedData == null) return false;
+        dataQueue.add(receivedData);
         return true;
     }
 
     @Override
-    public RecivedData poll() {
-        Iterator<RecivedData> iter = dataQueue.iterator();
-        RecivedData recivedData = iter.next();
-        if(recivedData != null) {
+    public ReceivedData poll() {
+        Iterator<ReceivedData> iter = dataQueue.iterator();
+        ReceivedData receivedData = iter.next();
+        if(receivedData != null) {
             iter.remove();
         }
-        return recivedData;
+        return receivedData;
     }
 
     @Override
-    public RecivedData peek() {
+    public ReceivedData peek() {
         return dataQueue.getFirst();
     }
 }
