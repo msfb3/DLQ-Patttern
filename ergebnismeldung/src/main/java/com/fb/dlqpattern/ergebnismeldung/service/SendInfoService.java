@@ -5,13 +5,18 @@ import com.fb.dlqpattern.ergebnismeldung.mapper.SendInfoMapper;
 import com.fb.dlqpattern.ergebnismeldung.rest.SendInfoDTO;
 import com.fb.dlqpattern.ergebnismeldung.util.ErgebnismeldungExceptionKonstanten;
 import de.muenchen.oss.wahllokalsystem.wls.common.exception.FachlicheWlsException;
+import de.muenchen.oss.wahllokalsystem.wls.common.exception.WlsException;
+import de.muenchen.oss.wahllokalsystem.wls.common.exception.model.WlsExceptionCategory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.InvalidPropertyException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 
@@ -22,17 +27,48 @@ import java.util.List;
 @Component
 public class SendInfoService {
 
+    RestClient restClient = RestClient.create();
+    String uriBase = "http://localhost:39147/ergebnismeldung";
+
+
+    String result = restClient.get()
+            .uri(uriBase + "/infos")
+            .retrieve()
+            .body(String.class);
+
+    SendInfo sendInfo = new SendInfo(1,"Fabi",26,"Human");
+    ResponseEntity<Void> response = restClient.post()
+            .uri(uriBase + "/infos")
+            .retrieve()
+            .toBodilessEntity();
+
+    public List<SendInfo> findAll() {
+        List<SendInfo> sendInfos = restClient.get()
+                .uri(uriBase + "/infos")
+                .exchange(( response)) -> {
+            if (response.getStatusCode().isSameCodeAs(HttpStatusCode.valueOf(204))) {
+                throw new WlsException() {
+                    @Override
+                    public WlsExceptionCategory getCategory() {
+                        return super.getCategory();
+                    }
+                }
+            }
+
+        }
+    }
+
+
+
+
+
+
+
 
 
     @Value("${service.info.oid}")
     private String serviceOid;
 
-public List<SendInfo> findAll() {
-    RestTemplate restTemplate = new RestTemplate();
-    restTemplate.setUriTemplateHandler(new DefaultUriBuilderFactory("http://localhost:39147"));
-    restTemplate.getForObject("/ergebnismeldung", String.class);
-    return null;
-}
 
     public void sendInfoFromDTO(SendInfoDTO sendInfoDTO) {
 

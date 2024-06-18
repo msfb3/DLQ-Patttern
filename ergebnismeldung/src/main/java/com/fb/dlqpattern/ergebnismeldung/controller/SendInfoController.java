@@ -16,10 +16,10 @@ public class SendInfoController {
     @Autowired
     SendInfoService sendInfoService;
 
-    @GetMapping("/posts")
-    List<SendInfo> findAll {
-        return sendInfoService.findAll();
-    }
+    @GetMapping("/infos")
+
+
+
 
     @PostMapping("")
     public void sendErgebnismeldung(@RequestBody SendInfoDTO info ) {
