@@ -31,6 +31,7 @@ public List<SendInfo> findAll() {
     RestTemplate restTemplate = new RestTemplate();
     restTemplate.setUriTemplateHandler(new DefaultUriBuilderFactory("http://localhost:39147"));
     restTemplate.getForObject("/ergebnismeldung", String.class);
+    return null;
 }
 
     public void sendInfoFromDTO(SendInfoDTO sendInfoDTO) {
