@@ -49,7 +49,7 @@ public class SendInfoService {
     public List<SendInfo> findAll() {
         RequestEntity<Void> request = RequestEntity.get(URI.create(uriBase + "/infos")).build();
 
-        ResponseEntity<List<SendInfo>> response = restClient.exchange(request, new ParameterizedTypeReference<List<SendInfo>>() {});
+        ResponseEntity<List<SendInfo>> response = (ResponseEntity<List<SendInfo>>) restClient.get();
 
         return  response.getBody();
     }
