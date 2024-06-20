@@ -10,6 +10,7 @@ import de.muenchen.oss.wahllokalsystem.wls.common.exception.model.WlsExceptionCa
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.InvalidPropertyException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,7 @@ import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 
+import java.lang.reflect.ParameterizedType;
 import java.net.URI;
 import java.util.List;
 
@@ -47,7 +49,9 @@ public class SendInfoService {
     public List<SendInfo> findAll() {
         RequestEntity<Void> request = RequestEntity.get(URI.create(uriBase + "/infos")).build();
 
-        ResponseEntity<List<SendInfo>> response = restClient.
+        ResponseEntity<List<SendInfo>> response = restClient.exchange(request, new ParameterizedTypeReference<List<SendInfo>>() {});
+
+        return  response.getBody();
     }
 
 
