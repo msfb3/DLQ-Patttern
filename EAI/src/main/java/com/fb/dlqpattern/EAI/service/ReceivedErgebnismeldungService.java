@@ -13,8 +13,14 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class ReceivedErgebnismeldungService {
+
     @Value("${service.info.oid}")
     private String serviceOid;
+
+    public String getInfoFromEai() {
+        return "Beispiel string as response from EAI";
+    }
+
     public void receiveErgebnismeldungService(ReceivedInfoDTO receivedInfoDTO) {
 
         log.debug("Nachricht erhalten");
@@ -35,5 +41,4 @@ public class ReceivedErgebnismeldungService {
     public void save(SendAlteredInfo sendAlteredInfo) {
         System.out.println("erfolgreich gespeichet" + sendAlteredInfo);
     }
-
 }

@@ -1,0 +1,5 @@
+GET http://localhost:39148/eai/info
+
+###
+GET http://localhost:39148/eai/testgetinfofromeai
+

@@ -1,4 +1,10 @@
-GET http://localhost:39147/hello
+GET http://localhost:39147/ergebnismeldung/hello
 
 ###
-GET http://localhost:39147/hello?name=Fabi
+GET http://localhost:39147/ergebnismeldung/hello?name=Fabi
+
+###
+GET http://localhost:39147/ergebnismeldung/infos
+
+###
+GET http://localhost:39147/ergebnismeldung/testgetinfofromeai

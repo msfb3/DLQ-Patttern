@@ -1,4 +1,4 @@
-POST http://localhost:39147/ergebnismeldung/sendergebnismeldung
+POST http://localhost:39148/eai/sendergebnismeldung
 Content-Type: application/json
 
 {
@@ -10,7 +10,7 @@ Content-Type: application/json
 
 
 ###
-POST http://localhost:39147/ergebnismeldung/sendergebnismeldung
+POST http://localhost:39148/eai/sendergebnismeldung
 Content-Type: application/json
 
 {
@@ -20,12 +20,12 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:39147/ergebnismeldung/sendergebnismeldung
+POST http://localhost:39148/eai/sendergebnismeldung
 Content-Type: application/json
 
 {
   "id": 123,
-  "name": "Testname aus Ergebnismeldung12",
+  "name": "Testname",
   "age": 99,
   "kind": "Schnellmeldung"
 }
