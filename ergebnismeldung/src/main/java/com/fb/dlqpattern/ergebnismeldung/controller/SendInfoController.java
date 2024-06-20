@@ -24,6 +24,6 @@ public class SendInfoController {
     @PostMapping("")
     public void sendErgebnismeldung(@RequestBody SendInfoDTO info ) {
 
-        sendInfoService.sendInfoFromDTO(info);
+        sendInfoService.findAll();
     }
 }
